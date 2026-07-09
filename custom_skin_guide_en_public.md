@@ -1,6 +1,6 @@
 # Custom Skin Mod Creation & Installation Guide
 
-This guide explains the specifications and steps for creating a custom skin as an independent Satisfactory plugin (Mod) and loading it as an InfoRobot skin in-game using the automatic detection system.
+This guide explains the specifications and steps for creating a custom skin as an independent Satisfactory plugin (Mod) and loading it as an InfoRobot skin in-game using the automatic detection system. [Here](https://github.com/abexsoft/QuinnSkin) is the sample custom skin.
 
 ---
 
