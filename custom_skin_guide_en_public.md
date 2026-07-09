@@ -8,7 +8,7 @@ This guide explains the specifications and steps for creating a custom skin as a
 Due to Satisfactory (UE5) security restrictions (mandatory IoStore encryption signatures), custom skin assets must be packaged as a plugin (Mod) using **`Alpakit`**, the official SML (Satisfactory Mod Loader) build tool, to be loaded into the game.
 
 *   **Skin Creators (Modders)**: Create the skin in the SML development environment, and build the package (signed `.pak`, `.utoc`, `.ucas`) using `Alpakit` for distribution.
-*   **General Players (Users)**: Can install the skin simply by placing the distributed skin Mod folder in the `Mods/` directory. **No SML development environment setup or manual asset packing is required.**
+*   **General Players (Users)**: Can install the skin simply by placing the distributed skin Mod folder in the `Mods/` directory. And enable 'Scan External Skins' in the game's global settings.
 
 ---
 
