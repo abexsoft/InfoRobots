@@ -21,7 +21,7 @@ Create a new Content Plugin (e.g., `MySkin`) in your SML development project, an
     *   Path structure: `/PluginName/InfoRobotsSkins/`
 2.  Inside it, create a folder named with any alphanumeric characters (e.g., **`MySkin`**), which will serve as the unique Skin ID.
     *   Path structure: `/PluginName/InfoRobotsSkins/MySkin/`
-    *   ※ The InfoRobot's C++ code automatically scans for this specific folder structure (`InfoRobotsSkins`), so the folder name must match exactly.
+    *   ※ The InfoRobot Mod automatically scans for this specific folder structure (`InfoRobotsSkins`), so the folder name must match exactly.
 
 ### **Required Assets**
 Place the following three assets inside the `/PluginName/InfoRobotsSkins/[SkinID]/` directory:
@@ -30,7 +30,7 @@ Place the following three assets inside the `/PluginName/InfoRobotsSkins/[SkinID
     *   The 3D mesh data of the robot.
 2.  **AnimBP** (Animation Blueprint)
     *   Controls the motion of the robot during movement and data collection.
-    *   **【C++ Auto-Synchronized Variables】**: The InfoRobot's C++ code automatically updates the following variables in the AnimBP every frame. You must declare these variables inside the AnimBP Event Graph, **matching the case exactly**:
+    *   **【C++ Auto-Synchronized Variables】**: The InfoRobot Mod automatically updates the following variables in the AnimBP every frame. You must declare these variables inside the AnimBP Event Graph, **matching the case exactly**:
         *   **`mSpeed` (Float)**: The current movement speed of the robot (in cm/s). Used for controlling locomotion blend spaces.
         *   **`mIsCollecting` (Boolean)**: Data collection status. Automatically set to `true` when the robot arrives at a node or station and plays the data-gathering animation. Used to drive state machine transitions.
 3.  **SkinDescriptor** (Configuration Asset)
@@ -38,7 +38,7 @@ Place the following three assets inside the `/PluginName/InfoRobotsSkins/[SkinID
     *   Asset Name: **`DA_[SkinID]`** (e.g., `DA_MySkin`)
     *   **Configuration Variables to Add**:
         > [!IMPORTANT]
-        > After creating variables, changing their types, or modifying default values, **always click the "Compile" button in the Blueprint Editor and "Save" the asset.** If you do not compile and save, the C++ automatic scanning system will not recognize the new variable names, types, or values, and loading the skin will fail.
+        > After creating variables, make sure to compile. Otherwise, modifying default values is not possible.
 
         You can safely override the robot's appearance and behavior by adding the following variable names and types:
         *   `mSkinName` (Text): The display name of the skin in the UI (e.g., `My Skin`. Supports spaces and localization).
@@ -88,11 +88,11 @@ Players only need to place the distributed skin Mod folder into the game's `Mods
 
 ---
 
-## **4. Auto-Detection and Loading Mechanism (C++ Engine Specifications)**
+## **4. Auto-Detection and Loading Mechanism**
 
 Upon game startup and skin application, the C++ backend of the InfoRobots Mod automatically executes the following logic:
 
 1.  **Check the 'Scan External Skins' option**:
-   　InfoRobot scans only when 'Scan External Skins' is enabled in the game's global settings.
+    InfoRobot Mod scans only when 'Scan External Skins' is enabled in the game's global settings.
 2.  **Plugin-Specific Directory Scanning**:
     Scans all loaded plugins (e.g., `MySkin`) and auto-detects virtual paths under **`/[PluginName]/InfoRobotsSkins`** in the asset registry. It ignores irrelevant directories, minimizing game startup overhead.
