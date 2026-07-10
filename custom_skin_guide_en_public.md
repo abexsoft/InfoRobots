@@ -21,7 +21,7 @@ Create a new Content Plugin (e.g., `MySkin`) in your SML development project, an
     *   Path structure: `/PluginName/InfoRobotsSkins/`
 2.  Inside it, create a folder named with any alphanumeric characters (e.g., **`MySkin`**), which will serve as the unique Skin ID.
     *   Path structure: `/PluginName/InfoRobotsSkins/MySkin/`
-    *   ※ The C++ code automatically scans for this specific folder structure (`InfoRobotsSkins`), so the folder name must match exactly.
+    *   ※ The InfoRobot's C++ code automatically scans for this specific folder structure (`InfoRobotsSkins`), so the folder name must match exactly.
 
 ### **Required Assets**
 Place the following three assets inside the `/PluginName/InfoRobotsSkins/[SkinID]/` directory:
@@ -34,7 +34,7 @@ Place the following three assets inside the `/PluginName/InfoRobotsSkins/[SkinID
         *   **`mSpeed` (Float)**: The current movement speed of the robot (in cm/s). Used for controlling locomotion blend spaces.
         *   **`mIsCollecting` (Boolean)**: Data collection status. Automatically set to `true` when the robot arrives at a node or station and plays the data-gathering animation. Used to drive state machine transitions.
 3.  **SkinDescriptor** (Configuration Asset)
-    *   **Base Class**: **`Object`** or **`PrimaryDataAsset`** (Select this as the parent class when creating a new Blueprint class. External users can create this even without the InfoRobots source code).
+    *   **Base Class**: **`Object`** or **`PrimaryDataAsset`** (Select this as the parent class when creating a new Blueprint class.).
     *   Asset Name: **`DA_[SkinID]`** (e.g., `DA_MySkin`)
     *   **Configuration Variables to Add**:
         > [!IMPORTANT]
@@ -44,9 +44,6 @@ Place the following three assets inside the `/PluginName/InfoRobotsSkins/[SkinID
         *   `mSkinName` (Text): The display name of the skin in the UI (e.g., `My Skin`. Supports spaces and localization).
         *   `mSkinDescription` (Text): The description of the skin displayed in the UI.
         *   `mSkeletalMesh` (SkeletalMesh Object Reference): Assign your custom SkeletalMesh asset.
-            > [!CAUTION]
-            > The variable type must be **`SkeletalMesh (Object Reference)`** or **`SkeletalMesh (Soft Object Reference)`**.
-            > If you define this as `Text` or `String` pointing to a path, it will fail validation, block the load, and fallback to the default skin (with a detailed type-mismatch error outputted to the console).
         *   `mAnimClass` (AnimInstance Class Reference/Class): Assign your custom AnimBP asset.
         *   **`mMaxWalkSpeed` (Float, Optional)**: The maximum walk speed of the robot when this skin is applied. If omitted or set to `0`, it defaults to the system default (`300.0`).
         *   **`mCameraHeightFromGround` (Float, Optional)**: The height of the first-person camera (eye level) from the ground (in cm) when hijacked by the player. If omitted or set to `0`, it defaults to the system default (`200.0`). (Automatically converted to relative Z offset in C++ based on the capsule center).
@@ -95,5 +92,7 @@ Players only need to place the distributed skin Mod folder into the game's `Mods
 
 Upon game startup and skin application, the C++ backend of the InfoRobots Mod automatically executes the following logic:
 
-1.  **Plugin-Specific Directory Scanning**:
+1.  **Check the 'Scan External Skins' option**:
+   　InfoRobot scans only when 'Scan External Skins' is enabled in the game's global settings.
+2.  **Plugin-Specific Directory Scanning**:
     Scans all loaded plugins (e.g., `MySkin`) and auto-detects virtual paths under **`/[PluginName]/InfoRobotsSkins`** in the asset registry. It ignores irrelevant directories, minimizing game startup overhead.
