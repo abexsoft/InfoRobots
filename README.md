@@ -19,3 +19,20 @@ This repository is for bug reports and discussions. If you have any questions or
 - A Data Unpacker Station unpacks and stores the information received from the conveyor. 
 - It also provides that information to any robots patrolling this station.
 - Currently, you can only build up to 20 Data Packer Stations. While I plan to increase this limit, it is finite under the current specifications.
+#### Waypoint Nodes
+- Walking Path Nodes are used solely to form the Walking Path. 
+- Monitoring Nodes serve as robot destinations and are utilized for facility monitoring.
+- You can change the monitoring range and the visibility of Monitoring Nodes in the global settings.
+- The Robot-only Portal(v1.0.2) is a special node designed to connect distant nodes.
+- Place two portals, select one of the portals and link them together.
+- This feature unlocks upon releasing SPWN.
+#### Robots
+- When you select a robot, you can configure patrol routes, start/stop patrols, view the robot camera, and change skins. 
+- For patrol route configuration, green 'Available Nodes' indicate that the node is currently targeted for patrol by a robot. 
+- If you change the patrol route configuration, please press 'Start' to apply the changes to the robot.
+- When you select the robot camera view, you can press [C] to switch between Fixed Camera and Mouse Look. 
+- In Mouse Look mode, hold the right mouse button and drag to change the viewpoint.
+- You can introduce your original character. [Here](https://github.com/abexsoft/InfoRobots/blob/main/custom_skin_guide_en_public.md) is how to do it.
+### Keybinding
+- [Insert] open Global Settings window
+- [Esc] close window
